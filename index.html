@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="utf - 8">
-  <title>zhaangg's web page</title>
-  <!-- 设置内容安全策略（CSP） -->
+  <title>zhaangg的网页-zhaangg's web page</title>
   <meta http-equiv="Content-Security-Policy" content="default-src'self'; script-src'self'; img-src'self' data:; connect-src'self'">
 </head>
 
@@ -22,7 +21,6 @@
   <br>
   <hr>
   <p>First line</p>
-  <!-- 对音乐链接添加跳转提示 -->
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1880853140&auto=0&height=66" onclick="return confirm('您即将打开音乐链接，是否继续？')"></iframe>
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=34922517&auto=0&height=66" onclick="return confirm('您即将打开音乐链接，是否继续？')"></iframe>
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=25773443&auto=0&height=66" onclick="return confirm('您即将打开音乐链接，是否继续？')"></iframe>
@@ -66,7 +64,6 @@
   <hr>
   <p>常用网址跳转 Frequently used URLs：</p>
   <br>
-  <!-- 对常用网址添加跳转提示和noopener noreferrer -->
   <a href="https://www.2345.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">2345网址导航－开创中国百年品牌（已创建12年零7个月）</a>
   <br>
   <hr>
@@ -105,23 +102,21 @@
   <marquee>-网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io-</marquee>
 
   <script>
-    // 链接合法性验证函数
     function validateLink(url) {
       const allowedDomains = ['music.163.com', 'www.2345.com', 'www.douyin.com', 'cn.bing.com', 'support.microsoft.com', 'www.deepseek.com', 'www.baidu.com', 'www.bilibili.com', 'space.bilibili.com', 'm.miyoushe.com'];
       const parsedUrl = new URL(url);
       return allowedDomains.includes(parsedUrl.hostname) && parsedUrl.protocol === 'https:';
     }
-
-    // 检查所有链接的合法性
-    const allLinks = document.querySelectorAll('a, iframe');
-    allLinks.forEach(link => {
-      const href = link.getAttribute('href') || link.getAttribute('src');
-      if (href &&!validateLink(href)) {
-        link.style.display = 'none'; // 隐藏不合法的链接
-      }
+    document.addEventListener('DOMContentLoaded', function () {
+      const allLinks = document.querySelectorAll('a, iframe');
+      allLinks.forEach(link => {
+        const href = link.getAttribute('href') || link.getAttribute('src');
+        if (href &&!validateLink(href)) {
+          link.style.display = 'none';
+        }
+      });
     });
-
-    // 禁用按键
+  
     document.addEventListener('keydown', function (event) {
       const keyCode = event.keyCode || event.which;
       const ctrlKey = event.ctrlKey;
