@@ -2,71 +2,46 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>zhaangg的博客</title>
+    <title>简易博客系统</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .login-container {
-            background: #f4f4f4;
-            padding: 20px;
-            border-radius: 5px;
-            display: block;
-        }
-        .blog-container {
-            display: none;
-        }
-        .post {
+        /* 新增音乐播放器样式 */
+        .music-player {
+            margin: 20px 0;
+            max-width: 330px;
             border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 10px;
             border-radius: 5px;
         }
-        .hidden {
-            display: none;
-        }
-        input[type="text"], input[type="password"] {
-            width: 200px;
-            padding: 5px;
+        .music-input {
+            width: 100%;
+            padding: 8px;
             margin: 5px 0;
         }
     </style>
 </head>
 <body>
-    <!-- 登录表单 -->
-    <div class="login-container" id="loginContainer">
-        <h2>用户登录</h2>
-        <form id="loginForm" onsubmit="return login()">
-            <div>
-                <label>用户名:</label>
-                <input type="text" id="username" required>
-            </div>
-            <div>
-                <label>密码:</label>
-                <input type="password" id="password" required>
-            </div>
-            <button type="submit">登录</button>
-        </form>
-    </div>
+    <!-- 原有登录表单保持不变 -->
 
-    <!-- 博客内容 -->
+    <!-- 修改后的博客内容部分 -->
     <div class="blog-container" id="blogContainer">
         <h1>我的博客</h1>
         <button onclick="showPostForm()">新建文章</button>
-        
-        <!-- 文章列表 -->
-        <div id="posts">
-            <div class="post">
-                <h3>示例文章</h3>
-                <p>zhaangg.github.io更新version1.3.0</p >
-                <small>作者：管理员 | 发布时间：2025-02-15</small>
-            </div>
+
+        <!-- 新增固定位置音乐播放器 -->
+        <div class="music-player">
+            <h3>背景音乐</h3>
+            <iframe 
+                frameborder="no" 
+                border="0" 
+                marginwidth="0" 
+                marginheight="0" 
+                width="330" 
+                height="86" 
+                src="//music.163.com/outchain/player?type=2&id=26664394&auto=0&height=66">
+            </iframe>
         </div>
 
-        <!-- 新建文章表单 -->
+        <!-- 修改后的新建文章表单 -->
         <div id="postForm" class="hidden">
             <h3>新建文章</h3>
             <form onsubmit="return addPost(event)">
@@ -76,64 +51,39 @@
                 <div>
                     <textarea id="postContent" rows="4" placeholder="内容" required></textarea>
                 </div>
+                <!-- 新增音乐外链输入 -->
+                <div>
+                    <input type="text" 
+                           id="musicLink" 
+                           class="music-input"
+                           placeholder="粘贴网易云音乐外链代码（可选）">
+                    <small>获取方式：在网易云音乐网页版找到歌曲 → 生成外链播放器 → 复制iframe代码</small>
+                </div>
                 <button type="submit">发布</button>
                 <button type="button" onclick="hidePostForm()">取消</button>
             </form>
         </div>
+
+        <!-- 原有文章列表保持不变 -->
     </div>
 
     <script>
-        // 禁用功能键
-        document.addEventListener('keydown', function(e) {
-            // 禁用 F1-F12
-            if ((e.keyCode >= 112 && e.keyCode <= 123)) {
-                e.preventDefault();
-                alert('功能键已被禁用');
-            }
-        });
-
-        // 禁用右键菜单
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            alert('右键菜单已被禁用');
-            return false;
-        });
-
-        // 登录功能
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // 简单验证（实际应用中需要后端验证）
-            if (username && password) {
-                document.getElementById('loginContainer').style.display = 'none';
-                document.getElementById('blogContainer').style.display = 'block';
-            }
-            return false;
-        }
-
-        // 博客功能
-        function showPostForm() {
-            document.getElementById('postForm').classList.remove('hidden');
-        }
-
-        function hidePostForm() {
-            document.getElementById('postForm').classList.add('hidden');
-        }
-
+        // 修改后的addPost函数
         function addPost(e) {
             e.preventDefault();
             const title = document.getElementById('postTitle').value;
             const content = document.getElementById('postContent').value;
-            
+            const musicCode = document.getElementById('musicLink').value;
+
             const postDiv = document.createElement('div');
             postDiv.className = 'post';
             postDiv.innerHTML = `
                 <h3>${title}</h3>
                 <p>${content}</p >
+                ${musicCode ? `<div class="music-player">${musicCode}</div>` : ''}
                 <small>作者：${document.getElementById('username').value} | 发布时间：${new Date().toLocaleString()}</small>
             `;
-            
+
             document.getElementById('posts').prepend(postDiv);
             hidePostForm();
             return false;
