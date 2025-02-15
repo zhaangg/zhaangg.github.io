@@ -1,71 +1,143 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
-  <meta charset="utf - 8">
-  <title>zhaangg的网页</title>
+    <meta charset="UTF-8">
+    <title>zhaangg的博客</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .login-container {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            display: block;
+        }
+        .blog-container {
+            display: none;
+        }
+        .post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        input[type="text"], input[type="password"] {
+            width: 200px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+    </style>
 </head>
+<body>
+    <!-- 登录表单 -->
+    <div class="login-container" id="loginContainer">
+        <h2>用户登录</h2>
+        <form id="loginForm" onsubmit="return login()">
+            <div>
+                <label>用户名:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div>
+                <label>密码:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">登录</button>
+        </form>
+    </div>
 
-<body bgcolor="#ABE45A">
-  <h1>Home</h1>
-   <h2>这里有一些音乐↓(可能播放卡顿，如遇此情况，请刷新网页再试)</h2>
-   <br>
-   <hr>
-   <u>营销号+电影解说常用</u>
-   <br>
-   <hr>
-  <p>First line</p>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1880853140&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=34922517&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=25773443&auto=0&height=66"></iframe>
-   <br>
-   <hr>
-  <p>Second line</p>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4341314&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1441860073&auto=1&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32835377&auto=0&height=66"></iframe>
-   <br>
-   <hr>
-  <p>Third line</p>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1327781623&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=5308028&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=36492599&auto=0&height=66"></iframe>
-   <br>
-   <hr>
-  <p>Fourth line</p>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=30854966&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=414980898&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32098431&auto=0&height=66"></iframe>
-   <br>
-   <hr>
-  <p>Fifth line</p>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27860419&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=33479592&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=544210814&auto=0&height=66"></iframe>
-   <br>
-   <hr>
-  <p>Sixth line</p>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=16846088&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=17423740&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=17423742&auto=0&height=66"></iframe>
-   <br>
-   <hr>
-  <p>Seventh line</p>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=17423743&auto=0&height=66"></iframe>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=29717271&auto=0&height=66"></iframe> 
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28949242&auto=0&height=66"></iframe>
-   <br>
-   <hr>
-  <p>Follow Me：</p>
-  <br>
-  <a href="https://space.bilibili.com/1463958374">bilibili账号主页→</a>
-  <br>
-  <a href="https://m.miyoushe.com/ys/#/accountCenter?id=337305473">米游社主页→</a>
-  <br>
-  <hr>
-  <s>本网站版本：version1.2.0</s>
-  <i>本网站版本：version1.2.1(更新内容：重新进行排版)</i>
-  
+    <!-- 博客内容 -->
+    <div class="blog-container" id="blogContainer">
+        <h1>我的博客</h1>
+        <button onclick="showPostForm()">新建文章</button>
+        
+        <!-- 文章列表 -->
+        <div id="posts">
+            <div class="post">
+                <h3>示例文章</h3>
+                <p>zhaangg.github.io更新version1.3.0</p >
+                <small>作者：管理员 | 发布时间：2025-02-15</small>
+            </div>
+        </div>
+
+        <!-- 新建文章表单 -->
+        <div id="postForm" class="hidden">
+            <h3>新建文章</h3>
+            <form onsubmit="return addPost(event)">
+                <div>
+                    <input type="text" id="postTitle" placeholder="标题" required>
+                </div>
+                <div>
+                    <textarea id="postContent" rows="4" placeholder="内容" required></textarea>
+                </div>
+                <button type="submit">发布</button>
+                <button type="button" onclick="hidePostForm()">取消</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 禁用功能键
+        document.addEventListener('keydown', function(e) {
+            // 禁用 F1-F12
+            if ((e.keyCode >= 112 && e.keyCode <= 123)) {
+                e.preventDefault();
+                alert('功能键已被禁用');
+            }
+        });
+
+        // 禁用右键菜单
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('右键菜单已被禁用');
+            return false;
+        });
+
+        // 登录功能
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // 简单验证（实际应用中需要后端验证）
+            if (username && password) {
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('blogContainer').style.display = 'block';
+            }
+            return false;
+        }
+
+        // 博客功能
+        function showPostForm() {
+            document.getElementById('postForm').classList.remove('hidden');
+        }
+
+        function hidePostForm() {
+            document.getElementById('postForm').classList.add('hidden');
+        }
+
+        function addPost(e) {
+            e.preventDefault();
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            
+            const postDiv = document.createElement('div');
+            postDiv.className = 'post';
+            postDiv.innerHTML = `
+                <h3>${title}</h3>
+                <p>${content}</p >
+                <small>作者：${document.getElementById('username').value} | 发布时间：${new Date().toLocaleString()}</small>
+            `;
+            
+            document.getElementById('posts').prepend(postDiv);
+            hidePostForm();
+            return false;
+        }
+    </script>
 </body>
-
 </html>
