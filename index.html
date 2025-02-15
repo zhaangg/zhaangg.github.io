@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf - 8">
-  <title>zhaangg的网页-zhaangg's web page</title>
+  <title>zhaangg's web page</title>
   <!-- 设置内容安全策略（CSP） -->
   <meta http-equiv="Content-Security-Policy" content="default-src'self'; script-src'self'; img-src'self' data:; connect-src'self'">
 </head>
@@ -105,23 +105,23 @@
   <marquee>-网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io-</marquee>
 
   <script>
-    //链接合法性验证函数
+    // 链接合法性验证函数
     function validateLink(url) {
       const allowedDomains = ['music.163.com', 'www.2345.com', 'www.douyin.com', 'cn.bing.com', 'support.microsoft.com', 'www.deepseek.com', 'www.baidu.com', 'www.bilibili.com', 'space.bilibili.com', 'm.miyoushe.com'];
       const parsedUrl = new URL(url);
       return allowedDomains.includes(parsedUrl.hostname) && parsedUrl.protocol === 'https:';
     }
 
-    //检查链接的合法性
+    // 检查所有链接的合法性
     const allLinks = document.querySelectorAll('a, iframe');
     allLinks.forEach(link => {
       const href = link.getAttribute('href') || link.getAttribute('src');
       if (href &&!validateLink(href)) {
-        link.style.display = 'none'; //隐藏不合法的链接
+        link.style.display = 'none'; // 隐藏不合法的链接
       }
     });
 
-    //禁用按键
+    // 禁用按键
     document.addEventListener('keydown', function (event) {
       const keyCode = event.keyCode || event.which;
       const ctrlKey = event.ctrlKey;
