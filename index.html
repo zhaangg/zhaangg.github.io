@@ -8,8 +8,8 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body bgcolor="#75B1F5">
-  <audio id="bgMusic" src="backgroundmusic.MP3" loop></audio>
+<body bgcolor="#A3E289">
+  <audio id="bgMusic" src="audio/backgroundmusic.mp3" loop></audio>
   <button onclick="playMusic()">播放背景音乐</button>
   <h1>zhaangg的网页-Home</h1>
   <u>网站已禁用F1-F12功能键及CTRL.Shift.Alt键；数字键；字母键</u>
@@ -134,22 +134,22 @@
 
       if (ctrlKey || shiftKey || altKey) {
         event.preventDefault();
-        alert('温馨提示：Ctrl、Shift、Alt键已被禁用(*^_^*)');
+        alert('温馨提示：您的Ctrl、Shift、Alt键已被禁用(*^_^*)');
       }
 
       if (keyCode >= 65 && keyCode <= 90) {
         event.preventDefault();
-        alert('温馨提示:字母键已被禁用(*^_^*)');
+        alert('温馨提示: 您的字母键已被禁用(*^_^*)');
       }
 
       if (keyCode >= 48 && keyCode <= 57) {
         event.preventDefault();
-        alert('温馨提示：主键盘区数字键已被禁用(*^_^*)');
+        alert('温馨提示：您的主键盘区数字键已被禁用(*^_^*)');
       }
 
       if (keyCode >= 96 && keyCode <= 105) {
         event.preventDefault();
-        alert('温馨提示：小键盘区数字键已被禁用(*^_^*)');
+        alert('温馨提示：您的小键盘区数字键已被禁用(*^_^*)');
       }
     });
 
