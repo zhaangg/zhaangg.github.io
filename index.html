@@ -5,9 +5,12 @@
   <meta charset="utf - 8">
   <title>zhaangg的网页-zhaangg's web page</title>
   <meta http-equiv="Content-Security-Policy" content="default-src'self'; script-src'self'; img-src'self' data:; connect-src'self'">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body bgcolor="#75B1F5">
+  <audio id="bgMusic" src="网站介绍.mp3" loop></audio>
+  <button onclick="playMusic()">播放背景音乐</button>
   <h1>zhaangg的网页-Home</h1>
   <u>网站已禁用F1-F12功能键及CTRL.Shift.Alt键；数字键；字母键</u>
   <br>
@@ -148,6 +151,11 @@
         alert('温馨提示：小键盘区数字键已被禁用(*^_^*)');
       }
     });
+     
+      function playMusic() {
+        const audio = document.getElementById('bgMusic');
+        audio.play();
+  }
   </script>
 </body>
 
