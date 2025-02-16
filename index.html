@@ -105,10 +105,6 @@
   <marquee>-网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io-</marquee>
 
   <script>
-    function playMusic() {
-        const audio = document.getElementById('bgMusic');
-        audio.play();
-  }
     
     function validateLink(url) {
       const allowedDomains = ['music.163.com', 'www.2345.com', 'www.douyin.com', 'cn.bing.com', 'support.microsoft.com', 'www.deepseek.com', 'www.baidu.com', 'www.bilibili.com', 'space.bilibili.com', 'm.miyoushe.com'];
@@ -156,6 +152,13 @@
         alert('温馨提示：小键盘区数字键已被禁用(*^_^*)');
       }
     });
+
+    function playMusic() {
+    const audio = document.getElementById('bgMusic');
+    audio.play().catch((error) => {
+        alert('音乐播放失败，请检查浏览器设置或音频文件路径。');
+    });
+    }
      
   </script>
 </body>
