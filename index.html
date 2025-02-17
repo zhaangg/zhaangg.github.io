@@ -14,6 +14,7 @@
   <button onclick="pauseMusic()">暂停背景音乐</button>
   <h1>zhaangg的网页-Home</h1>
   <u>网站已禁用F1-F12功能键及CTRL.Shift.Alt键；数字键；字母键</u>
+  <u>网站建议.反馈联系，移至Follow Me一栏，bilibili账号私信联系；网站建设需要你的一臂之力！</u>
   <br>
   <marquee>网站已禁用F1-F12功能键及CTRL.Shift.Alt键；数字键；字母键</marquee>
   <br>
@@ -89,6 +90,9 @@
   <a href="https://www.bilibili.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a>
   <br>
   <hr>
+  <a href="https://www.x.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">X | Twitter | 推特</a>
+  <br>
+  <hr>
   <p>Follow Me：</p>
   <br>
   <a href="https://space.bilibili.com/1463958374" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">bilibili账号主页→</a>
@@ -98,7 +102,7 @@
   <hr>
   
   <s>本网站版本 Version of this website：version1.3.4</s>
-  <i>本网站版本 Version of this website：version1.3.5(更新内容：修复bug)</i>
+  <i>本网站版本 Version of this website：version1.3.5.1(更新内容：修复bug)</i>
   <br>
   <i>本网站建议在网络通畅的情况下使用-建议使用Chromium内核版本132以上(或Firefox quantum 133以上，其他内核建议最新版本)的浏览器浏览，因为本网站可能不兼容老版本浏览器，如IE浏览器等！</i>
   <br>
@@ -108,7 +112,7 @@
   <script>
     
     function validateLink(url) {
-      const allowedDomains = ['music.163.com', 'www.2345.com', 'www.douyin.com', 'cn.bing.com', 'support.microsoft.com', 'www.deepseek.com', 'www.baidu.com', 'www.bilibili.com', 'space.bilibili.com', 'm.miyoushe.com'];
+      const allowedDomains = ['music.163.com', 'www.2345.com', 'www.douyin.com', 'cn.bing.com', 'support.microsoft.com', 'www.deepseek.com', 'www.baidu.com', 'www.bilibili.com', 'space.bilibili.com', 'm.miyoushe.com', 'www.x.com'];
       const parsedUrl = new URL(url);
       return allowedDomains.includes(parsedUrl.hostname) && parsedUrl.protocol === 'https:';
     }
