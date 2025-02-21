@@ -14,6 +14,7 @@
 </head>
 
 <body bgcolor="#A3E289">
+
     <div id="invite-code-section">
         <h2>进站认证工具：请输入邀请码</h2>
         <input type="text" id="invite-code" placeholder="输入邀请码">
@@ -24,8 +25,10 @@
     <div id="main-content" style="display: none;">
         <audio id="bgMusic" src="backgroundmusic.mp3" loop></audio>
     </div>
-
 </body>
+
+  
+
   <audio id="bgMusic" src="backgroundmusic.mp3" loop></audio>
   <button onclick="playMusic()">播放背景音乐(第一次播放可能有些许卡顿，属正常情况！)</button>
   <button onclick="pauseMusic()">暂停背景音乐</button>
@@ -84,14 +87,14 @@
   <i>本网站建议在网络通畅的情况下使用-建议使用Chromium内核版本132以上(或Firefox quantum 133以上，其他内核建议最新版本)的浏览器浏览，因为本网站可能不兼容老版本浏览器，如IE浏览器等！</i>
   <br>
   <big>网站已禁用F1-F12功能键及CTRL.Shift.Alt键；数字键；字母键</big>
-  <marquee>-网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io-</marquee>
+  <marquee>-网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL-адрес сайта:zhaangg.github.io-</marquee>
 
   <script>
 
-    const correctInviteCode = "wenjie";
+    const correctInviteCode = "wenjIa"; 
+    let isCodeValid = false; 
 
-    // 新增：验证邀请码的函数
-    function validateInviteCode() {
+   function validateInviteCode() {
         const inputCode = document.getElementById('invite-code').value;
         const errorMessage = document.getElementById('error-message');
         const mainContent = document.getElementById('main-content');
@@ -101,7 +104,9 @@
             inviteSection.style.display = 'none';
             mainContent.style.display = 'block';
             errorMessage.textContent = '';
+            isCodeValid = true; 
         } else {
+
             errorMessage.textContent = '邀请码错误，请重新输入。';
         }
     }
@@ -122,51 +127,78 @@
       });
     });
   
-    document.addEventListener('keydown', function (event) {
-      const keyCode = event.keyCode || event.which;
-      const ctrlKey = event.ctrlKey;
-      const shiftKey = event.shiftKey;
-      const altKey = event.altKey;
-
-      if (keyCode >= 112 && keyCode <= 123) {
-        event.preventDefault();
-        alert('温馨提示：您的F1 - F12 键已被禁用(*^_^*)');
-      }
-
-      if (ctrlKey || shiftKey || altKey) {
-        event.preventDefault();
-        alert('温馨提示：您的Ctrl、Shift、Alt键已被禁用(*^_^*)');
-      }
-
-      if (keyCode >= 65 && keyCode <= 90) {
-        event.preventDefault();
-        alert('温馨提示: 您的字母键已被禁用(*^_^*)');
-      }
-
-      if (keyCode >= 48 && keyCode <= 57) {
-        event.preventDefault();
-        alert('温馨提示：您的主键盘区数字键已被禁用(*^_^*)');
-      }
-
-      if (keyCode >= 96 && keyCode <= 105) {
-        event.preventDefault();
-        alert('温馨提示：您的小键盘区数字键已被禁用(*^_^*)');
-      }
-    });
-
     function playMusic() {
-    const audio = document.getElementById('bgMusic');
-    audio.play().catch((error) => {
-        alert('音乐播放失败，请检查浏览器设置！');
-    });
+        if (!isCodeValid) {
+            alert('请先输入正确的邀请码！');
+            return;
+        }
+        const audio = document.getElementById('bgMusic');
+        audio.play().catch((error) => {
+            alert('音乐播放失败，请检查浏览器设置！');
+        });
     }
 
     function pauseMusic() {
+        if (!isCodeValid) {
+            alert('请先输入正确的邀请码！');
+            return;
+        }
         const audio = document.getElementById('bgMusic');
         audio.pause();
     }
-     
+
+    const allLinks = document.querySelectorAll('a, iframe');
+    allLinks.forEach(link => {
+        const originalOnClick = link.onclick;
+        link.onclick = function () {
+            if (!isCodeValid) {
+                alert('请先输入正确的邀请码！');
+                return false;
+            }
+            if (originalOnClick) {
+                return originalOnClick.apply(this, arguments);
+            }
+        };
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (!isCodeValid) {
+            event.preventDefault();
+            alert('请先输入正确的邀请码！');
+            return;
+        }
+        const keyCode = event.keyCode || event.which;
+        const ctrlKey = event.ctrlKey;
+        const shiftKey = event.shiftKey;
+        const altKey = event.altKey;
+
+        if (keyCode >= 112 && keyCode <= 123) {
+            event.preventDefault();
+            alert('温馨提示：您的F1 - F12 键已被禁用(*^_^*)');
+        }
+
+        if (ctrlKey || shiftKey || altKey) {
+            event.preventDefault();
+            alert('温馨提示：您的Ctrl、Shift、Alt键已被禁用(*^_^*)');
+        }
+
+        if (keyCode >= 65 && keyCode <= 90) {
+            event.preventDefault();
+            alert('温馨提示: 您的字母键已被禁用(*^_^*)');
+        }
+
+        if (keyCode >= 48 && keyCode <= 57) {
+            event.preventDefault();
+            alert('温馨提示：您的主键盘区数字键已被禁用(*^_^*)');
+        }
+
+        if (keyCode >= 96 && keyCode <= 105) {
+            event.preventDefault();
+            alert('温馨提示：您的小键盘区数字键已被禁用(*^_^*)');
+        }
+    });
   </script>
 </body>
 
 </html>
+ 
