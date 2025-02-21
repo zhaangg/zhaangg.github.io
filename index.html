@@ -8,7 +8,6 @@
     <style>
         body {
             background-image: url('shengji.jpg');
-             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
         }
@@ -16,9 +15,9 @@
 </head>
 
 <body>
-    <h1>网站升级中</h1>
-    <audio autoplay loop>
-        <source src="backgroundmusic1.mp3" type="audio/mpeg">不支持播放</audio>
+     <audio id="bgMusic" src="backgroundmusic1.mp3" loop></audio>
+     <button onclick="playMusic()">播放背景音乐(第一次播放可能有些许卡顿，属正常情况！)</button>
+    <button onclick="pauseMusic()">暂停背景音乐</button>
 </body>
 
 </html>
