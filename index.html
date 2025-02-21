@@ -163,9 +163,7 @@
 
     document.addEventListener('keydown', function (event) {
         if (!isCodeValid) {
-            event.preventDefault();
-            alert('请先输入正确的邀请码！');
-            return;
+            return; 
         }
         const keyCode = event.keyCode || event.which;
         const ctrlKey = event.ctrlKey;
@@ -201,4 +199,3 @@
 </body>
 
 </html>
- 
