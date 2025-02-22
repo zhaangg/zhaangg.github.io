@@ -1,0 +1,257 @@
+<!--网站网址 zhaangg.github.io 更新日期2025/2/22 作者B站UID:1463958374-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf - 8">
+    <title>zhaangg的网页2.1 - zhaangg's web page (version 2.1)</title>
+    <meta http-equiv="Content - Security - Policy" content="default - src'self'; script - src'self'; img - src'self' data:; connect - src'self'">
+    <link rel="icon" href="favicon.ico" type="image/x - icon">
+    <style>
+        body {
+            background-image: url('bj.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center; 
+        }
+
+        #main - content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('bj.png'); background - size: cover; background - repeat: no - repeat;">
+    <div id="random - id - section">
+        <big>识别码：<span id="random - id"></span></big>
+    </div>
+    <div id="invite - code - section">
+        <h2>zhaangg进站认证工具：请输入邀请码</h2>
+        <input type="text" id="invite - code" placeholder="输入邀请码">
+        <button onclick="validateInviteCode()">验证</button>
+        <p id="error - message" style="color: red;"></p>
+    </div>
+
+    <div id="main - content" style="display: none;">
+        <audio id="bgMusic" src="back.m4a" loop></audio>
+    </div>
+    <audio id="bgMusic" src="back.m4a" loop></audio>
+    <button onclick="playMusic()">播放背景音乐(第一次播放可能有些许卡顿，属正常情况！)</button>
+    <button onclick="pauseMusic()">暂停背景音乐</button>
+    <h1>zhaangg - Home</h1>
+    <u>网站已禁用F1 - F12功能键及CTRL.Shift.Alt键；数字键；字母键</u>
+    <u>网站建议.反馈联系，移至Follow Me一栏，bilibili账号私信联系；网站建设需要你的一臂之力！</u>
+    <br>
+    <marquee>网站已禁用F1 - F12功能键及CTRL.Shift.Alt键；数字键；字母键</marquee>
+    <br>
+    <marquee>-网站网址 網站網址 Website URL URL - адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL - адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL - адрес сайта:zhaangg.github.io -</marquee>
+    <br>
+    <h2>zhaangg扎昂格™小游戏平台(主页v2.0.0重磅更新↓↓↓)</h2>
+    <br>
+    <a href="game2048/index.html">zhaangg扎昂格™ - 2048小游戏 - 满血版(版本号：v0.0.1；适龄提示：8+)</a>
+    <br>
+    <a href="gamesnake/index.html">zhaangg扎昂格™ - 贪吃蛇 - 满血版(版本号：v0.0.1；适龄提示：12+)</a>
+    <br>
+    <a href="gamechess/index.html">zhaangg扎昂格™intelligent(益智)-五子棋 - 满血版(版本号：v0.0.1；适龄提示：18+)</a>
+    <br><hr>
+    <h2>鸡乐盒 Plus (站长提示，“鸡乐盒 Plus”源代码来自Github，点击进入鸡乐盒，移至最下面，可转到源码仓库！) (适龄提示：2.5+)</h2>
+    <a href="Jilehe/index.html">鸡乐盒 Plus</a>
+    <br><hr>
+    <h2>这里有一些音乐↓(可能播放卡顿，如遇此情况，请刷新网页再试)Here is some music ↓ (may play stuck, in this case, please refresh the webpage and try again)</h2>
+    <br>
+    <hr>
+    <u>营销号 + 电影解说常用(整理成歌单，界面更纯净，音乐更多 约60首！)</u>
+    <br>
+    <hr>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13353242963&auto=0&height=430"></iframe>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13352325173&auto=0&height=430"></iframe>
+    <br>
+    <hr>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13352398231&auto=0&height=430"></iframe>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13352439204&auto=0&height=430"></iframe>
+    <br>
+    <hr>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13353190532&auto=0&height=430"></iframe>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13352657034&auto=0&height=430"></iframe>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13353196376&auto=1&height=430"></iframe>
+    <br>
+    <hr>
+    <u>热歌</u>
+    <br>
+    <hr>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2165736345&auto=1&height=66"></iframe>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2602411474&auto=0&height=66"></iframe>
+    <br>
+    <hr>
+    <h2>常用网址跳转 Frequently used URLs：</h2>
+    <br>
+    <a href="https://www.2345.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">2345网址导航－开创中国百年品牌（已创建19年06个月）</a>
+    <br>
+    <hr>
+    <a href="https://www.douyin.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">抖音 - 记录美好生活</a>
+    <br>
+    <hr>
+    <a href="https://cn.bing.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">Bing必应搜索</a>
+    <br>
+    <hr>
+    <a href="https://support.microsoft.com/zh - cn/copilot - microsoft365 - chat" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">Microsoft 365 Copilot Chat</a>
+    <br>
+    <hr>
+    <a href=" https://www.deepseek.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">Deepseek | 深度求索</a>
+    <br>
+    <hr>
+    <a href="https://www.baidu.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">百度一下，你就知道</a>
+    <br>
+    <hr>
+    <a href="https://www.bilibili.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">哔哩哔哩 (゜ - ゜)つロ 干杯~ - bilibili</a>
+    <br>
+    <hr>
+    <a href="https://www.x.com/" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">X | Twitter | 推特</a>
+    <br>
+    <hr>
+    <h2>Follow Me：</h2>
+    <br>
+    <a href="https://space.bilibili.com/1463958374" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">bilibili账号主页→</a>
+    <br>
+    <a href="https://github.com/zhaangg" onclick="return confirm('您即将离开本网站，是否继续？')" target="_blank" rel="noopener noreferrer">Github账号主页→(访问可能较慢，建议使用加速器)</a>
+    <br>
+    <hr>
+
+    <s>主页版本：version2.0.0(更新内容：添加了小游戏等，启动邀请码功能 --重磅-- )</s>
+    <i>主页版本：version2.1.0(更新内容：更改了主题，界面更纯净 )</i>
+    <br>
+    <i>本网站建议在网络通畅的情况下使用 - 建议使用Chromium内核版本133以上(或Firefox quantum 134以上，其他内核建议最新版本)的浏览器浏览，因为本网站可能不兼容老版本浏览器，如IE浏览器等！</i>
+    <br>
+    <marquee>-网站网址 網站網址 Website URL URL - адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL - адрес сайта:zhaangg.github.io -</marquee>
+
+    <script>
+        function generateRandomId() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let randomId = '';
+            const length = 10;
+            for (let i = 0; i < length; i++) {
+                randomId += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return randomId;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const randomIdElement = document.getElementById('random - id');
+            const randomId = generateRandomId();
+            randomIdElement.textContent = randomId;
+        });
+
+
+        const correctInviteCode = "zhaanggVlP666";
+        let isCodeValid = false;
+
+        function validateInviteCode() {
+            const inputCode = document.getElementById('invite - code').value;
+            const errorMessage = document.getElementById('error - message');
+            const mainContent = document.getElementById('main - content');
+            const inviteSection = document.getElementById('invite - code - section');
+
+            if (inputCode === correctInviteCode) {
+                inviteSection.style.display = 'none';
+                mainContent.style.display = 'block';
+                errorMessage.textContent = '';
+                isCodeValid = true;
+            } else {
+
+                errorMessage.textContent = '邀请码错误，请重新输入。 error 0e001';
+            }
+        }
+
+
+        function validateLink(url) {
+            const allowedDomains = ['music.163.com', 'www.2345.com', 'www.douyin.com', 'cn.bing.com','support.microsoft.com', 'www.deepseek.com', 'www.baidu.com', 'www.bilibili.com','space.bilibili.com','m.miyoushe.com', 'www.x.com'];
+            const parsedUrl = new URL(url);
+            return allowedDomains.includes(parsedUrl.hostname) && parsedUrl.protocol === 'https:';
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const allLinks = document.querySelectorAll('a, iframe');
+            allLinks.forEach(link => {
+                const href = link.getAttribute('href') || link.getAttribute('src');
+                if (href &&!validateLink(href)) {
+                    link.style.display = 'none';
+                }
+            });
+        });
+
+        function playMusic() {
+            if (!isCodeValid) {
+                alert('请先输入正确的邀请码！');
+                return;
+            }
+            const audio = document.getElementById('bgMusic');
+            audio.play().catch((error) => {
+                alert('音乐播放失败，请检查浏览器设置！ error 0e002');
+            });
+        }
+
+        function pauseMusic() {
+            if (!isCodeValid) {
+                alert('请先输入正确的邀请码！');
+                return;
+            }
+            const audio = document.getElementById('bgMusic');
+            audio.pause();
+        }
+
+        const allLinks = document.querySelectorAll('a, iframe');
+        allLinks.forEach(link => {
+            const originalOnClick = link.onclick;
+            link.onclick = function () {
+                if (!isCodeValid) {
+                    alert('请先输入正确的邀请码！');
+                    return false;
+                }
+                if (originalOnClick) {
+                    return originalOnClick.apply(this, arguments);
+                }
+            };
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (!isCodeValid) {
+                return;
+            }
+            const keyCode = event.keyCode || event.which;
+            const ctrlKey = event.ctrlKey;
+            const shiftKey = event.shiftKey;
+            const altKey = event.altKey;
+
+            if (keyCode >= 112 && keyCode <= 123) {
+                event.preventDefault();
+                alert('温馨提示：您的F1 - F12键已被禁用(*^_^*)');
+            }
+
+            if (ctrlKey || shiftKey || altKey) {
+                event.preventDefault();
+                alert('温馨提示：您的Ctrl.Shift.Alt键已被禁用(*^_^*)');
+            }
+
+            if (keyCode >= 65 && keyCode <= 90) {
+                event.preventDefault();
+                alert('温馨提示: 您的字母键已被禁用(*^_^*)');
+            }
+
+            if (keyCode >= 48 && keyCode <= 57) {
+                event.preventDefault();
+                alert('温馨提示：您的主键盘区数字键已被禁用(*^_^*)');
+            }
+
+            if (keyCode >= 96 && keyCode <= 105) {
+                event.preventDefault();
+                alert('温馨提示：您的小键盘区数字键已被禁用(*^_^*)');
+            }
+        });
+    </script>
+</body>
+
+</html>
