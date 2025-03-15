@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zhaangg扎昂格™2D狂野赛车</title>
+    <h1>zhaangg扎昂格™2D狂野赛车 v0.0.2更新</h1>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=33887932&auto=1&height=66"></iframe>
+    <p>游戏参数：
+        盾牌为防护罩 持续5秒，
+        奔驰V8发动机为加速 持续5秒，
+        Brembo刹车卡钳为减速 持续5秒，
+        道具生成间隔 5秒，
+        使用 ↑ ↓ ← → 操作
+    <style>
+        #game-container {
+            width: 400px;
+            height: 600px;
+            margin: 0 auto;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        #car {
+            width: 50px;
+            height: 100px;
+            position: absolute;
+            bottom: 10px;
+        }
+
+        .obstacle {
+            width: 50px;
+            height: 90px;
+            position: absolute;
+        }
+
+        .lane {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: white;
+        }
+
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .power-up {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+        }
+
+        #start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #image-container a {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #image-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #skip-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #countdown {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game-container">
+        <div class="lane" style="left: 100px;"></div>
+        <div class="lane" style="left: 200px;"></div>
+        <div class="lane" style="left: 300px;"></div>
+        <img id="car" src="car.png" alt="Car">
+        <div id="score">0</div>
+        <button id="start-button">开始游戏</button>
+        <div id="image-container">
+            <a href="https://www.marscode.cn" target="_blank">
+                <img src="ad1.png" alt="Advertisement">
+            </a>
+            <button id="skip-button">跳过广告</button>
+            <div id="countdown">5</div>
+        </div>
+    </div>
+
+    <script>
+        const gameContainer = document.getElementById('game-container');
+        const car = document.getElementById('car');
+        const scoreElement = document.getElementById('score');
+        const startButton = document.getElementById('start-button');
+        const imageContainer = document.getElementById('image-container');
+        const skipButton = document.getElementById('skip-button');
+        const countdownElement = document.getElementById('countdown');
+        const laneWidth = 100;
+        const lanes = [25, 125, 225, 325];
+        let currentLane = 2;
+        car.style.left = lanes[currentLane] + 'px';
+        const carSpeed = 1;
+        const obstacles = [];
+        let obstacleInterval = 2000;
+        let obstacleSpeed = 5;
+        const powerUps = [];
+        let powerUpInterval = 5000;
+        let score = 0;
+        let difficultyLevel = 1;
+        const scoreMultiplierIncrement = 0.5;
+        let scoreMultiplier = 1;
+        let gameOver = false;
+        let hasShield = false;
+        const shieldDuration = 5000;
+        let shieldTimer;
+        let gameStarted = false;
+        let obstacleIntervalId;
+        let difficultyIntervalId;
+        let powerUpIntervalId;
+        let countdown = 5;
+        let countdownInterval;
+
+        document.addEventListener('keydown', function (event) {
+            if (gameStarted) {
+                if (event.key === 'ArrowLeft' && currentLane > 0) {
+                    currentLane--;
+                } else if (event.key === 'ArrowRight' && currentLane < lanes.length - 1) {
+                    currentLane++;
+                }
+                car.style.left = lanes[currentLane] + 'px';
+            }
+        });
+
+        function createObstacle() {
+            for (let i = 0; i < 2; i++) {
+                const obstacle = document.createElement('img');
+                obstacle.classList.add('obstacle');
+                obstacle.src = 'obstacle.png';
+                obstacle.alt = 'Obstacle';
+                const randomLaneIndex = Math.floor(Math.random() * lanes.length);
+                obstacle.style.left = lanes[randomLaneIndex] + 'px';
+                obstacle.style.top = '0px';
+                gameContainer.appendChild(obstacle);
+                obstacles.push(obstacle);
+            }
+        }
+
+        function createPowerUp() {
+            const powerUp = document.createElement('img');
+            powerUp.classList.add('power-up');
+            const powerUpTypes = ['slow', 'speed', 'shield'];
+            const randomType = powerUpTypes[Math.floor(Math.random() * powerUpTypes.length)];
+            powerUp.dataset.type = randomType;
+            powerUp.src = `${randomType}.png`;
+            powerUp.alt = `Power Up - ${randomType}`;
+            const randomLaneIndex = Math.floor(Math.random() * lanes.length);
+            powerUp.style.left = lanes[randomLaneIndex] + 'px';
+            powerUp.style.top = '0px';
+            gameContainer.appendChild(powerUp);
+            powerUps.push(powerUp);
+        }
+
+        function moveObjects() {
+            if (gameStarted) {
+                for (let i = 0; i < obstacles.length; i++) {
+                    const obstacle = obstacles[i];
+                    const obstacleY = parseInt(obstacle.style.top) || 0;
+                    obstacle.style.top = obstacleY + obstacleSpeed + 'px';
+
+                    if (obstacleY > gameContainer.offsetHeight) {
+                        gameContainer.removeChild(obstacle);
+                        obstacles.splice(i, 1);
+                        i--;
+                        score += scoreMultiplier;
+                        scoreElement.textContent = Math.floor(score);
+                    }
+
+                    if (!gameOver && isCollision(car, obstacle)) {
+                        if (hasShield) {
+                            gameContainer.removeChild(obstacle);
+                            obstacles.splice(i, 1);
+                            i--;
+                        } else {
+                            endGame();
+                        }
+                    }
+                }
+
+                for (let i = 0; i < powerUps.length; i++) {
+                    const powerUp = powerUps[i];
+                    const powerUpY = parseInt(powerUp.style.top) || 0;
+                    powerUp.style.top = powerUpY + obstacleSpeed + 'px';
+
+                    if (powerUpY > gameContainer.offsetHeight) {
+                        gameContainer.removeChild(powerUp);
+                        powerUps.splice(i, 1);
+                        i--;
+                    }
+
+                    if (isCollision(car, powerUp)) {
+                        const powerUpType = powerUp.dataset.type;
+                        applyPowerUp(powerUpType);
+                        gameContainer.removeChild(powerUp);
+                        powerUps.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+            requestAnimationFrame(moveObjects);
+        }
+
+        function isCollision(element1, element2) {
+            const rect1 = element1.getBoundingClientRect();
+            const rect2 = element2.getBoundingClientRect();
+            return (
+                rect1.left < rect2.right &&
+                rect1.right > rect2.left &&
+                rect1.top < rect2.bottom &&
+                rect1.bottom > rect2.top
+            );
+        }
+
+        function applyPowerUp(type) {
+            switch (type) {
+                case 'slow':
+                    obstacleSpeed = Math.max(1, obstacleSpeed - 2);
+                    setTimeout(() => {
+                        obstacleSpeed += 2;
+                    }, 5000);
+                    break;
+                case 'speed':
+                    obstacleSpeed += 2;
+                    setTimeout(() => {
+                        obstacleSpeed = Math.max(1, obstacleSpeed - 2);
+                    }, 5000);
+                    break;
+                case 'shield':
+                    hasShield = true;
+                    clearTimeout(shieldTimer);
+                    shieldTimer = setTimeout(() => {
+                        hasShield = false;
+                    }, shieldDuration);
+                    break;
+            }
+        }
+
+        function increaseDifficulty() {
+            difficultyLevel++;
+            obstacleSpeed += 1;
+            obstacleInterval = Math.max(500, obstacleInterval - 200);
+            scoreMultiplier += scoreMultiplierIncrement;
+            clearInterval(obstacleIntervalId);
+            obstacleIntervalId = setInterval(createObstacle, obstacleInterval);
+        }
+
+        function endGame() {
+            gameOver = true;
+            gameStarted = false;
+            alert(`行车不规范，亲人两行泪！你的最终分数是: ${Math.floor(score)}`);
+            clearInterval(obstacleIntervalId);
+            clearInterval(difficultyIntervalId);
+            clearInterval(powerUpIntervalId);
+            clearTimeout(shieldTimer);
+            startButton.style.display = 'block';
+            setTimeout(() => {
+                location.reload(true);
+            }, 100);
+        }
+
+        function startGame() {
+            gameStarted = true;
+            startButton.style.display = 'none';
+            const difficultyIncreaseInterval = 10000;
+            difficultyIntervalId = setInterval(increaseDifficulty, difficultyIncreaseInterval);
+            obstacleIntervalId = setInterval(createObstacle, obstacleInterval);
+            powerUpIntervalId = setInterval(createPowerUp, powerUpInterval);
+            moveObjects();
+        }
+
+        function startCountdown() {
+            console.log('Countdown started');
+            countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    imageContainer.style.display = 'none';
+                    startGame();
+                }
+            }, 1000);
+        }
+
+        startButton.addEventListener('click', () => {
+            startButton.style.display = 'none';
+            imageContainer.style.display = 'flex';
+            countdown = 5;
+            countdownElement.textContent = countdown;
+            startCountdown();
+        });
+
+        skipButton.addEventListener('click', () => {
+            console.log('Skip button clicked');
+            clearInterval(countdownInterval);
+            imageContainer.style.display = 'none';
+            startGame();
+        });
+    </script>
+</body>
+
+</html>

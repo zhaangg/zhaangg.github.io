@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跳跃的恐龙 - 国际版</title>
+  <style type="text/css">
+    iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #overlay img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    #countdown {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      font-size: 24px;
+    }
+
+    #skip-button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: white;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="overlay">
+    <a href="https://aito.auto/model/m7-new/">
+      <img src="ad2.png" alt="Advertisement">
+    </a>
+    <div id="countdown">5</div>
+    <button id="skip-button">跳过广告</button>
+  </div>
+  <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const countdownElement = document.getElementById('countdown');
+    const skipButton = document.getElementById('skip-button');
+    let countdown = 5;
+    const countdownInterval = setInterval(() => {
+      countdown--;
+      countdownElement.textContent = countdown;
+      if (countdown === 0) {
+        clearInterval(countdownInterval);
+        overlay.style.display = 'none';
+      }
+    }, 1000);
+
+    skipButton.addEventListener('click', () => {
+      clearInterval(countdownInterval);
+      overlay.style.display = 'none';
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zhaangg贪吃蛇游戏v0.0.2</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #adContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #adImage {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        #skipButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #countdown {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="adContainer">
+        <a href="https://www.tesla.cn/modely" target="_blank">
+            <img id="adImage" src="ad3.jpg">
+        </a>
+        <button id="skipButton">跳过广告</button>
+        <div id="countdown"></div>
+    </div>
+    <h1>zhaangg扎昂格™-贪吃蛇</h1>
+    <h2>站内最高分：Admin(站长) - 123分</h2>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2626266691&auto=1&height=66"></iframe><br>
+    <button id="startButton">开始游戏</button><br>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <script src="script.js"></script>
+</body>
+
+</html>
