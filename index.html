@@ -1,0 +1,282 @@
+<!--网站网址 zhaangg.github.io-->
+<!--
+▀▀█ █──█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀▀ ─ 
+▄▀─ █▀▀█ █▄▄█ █▄▄█ █──█ █─▀█ █─▀█ ▄ 
+▀▀▀ ▀──▀ ▀──▀ ▀──▀ ▀──▀ ▀▀▀▀ ▀▀▀▀ █ 
+
+█▀▀▀ ─▀─ ▀▀█▀▀ █──█ █──█ █▀▀▄ ─ 
+█─▀█ ▀█▀ ──█── █▀▀█ █──█ █▀▀▄ ▄ 
+▀▀▀▀ ▀▀▀ ──▀── ▀──▀ ─▀▀▀ ▀▀▀─ █ 
+
+─▀─ █▀▀█ 
+▀█▀ █──█ 
+▀▀▀ ▀▀▀▀ -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf - 8">
+    <title>Zhaangg - Super</title>
+    <meta http-equiv="Content - Security - Policy" content="default - src'self'; script - src'self'; img - src'self' data:; connect - src'self'">
+    <link rel="icon" href="favicon.ico" type="image/x - icon">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #browserVersionAlert {
+            color: #ff0000;
+            text-align: left;
+            padding: 10px;
+            background-color: #ffebee;
+            border: 1px solid #ef9a9a;
+            margin-bottom: 20px;
+        }
+
+        #random - id - section {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .game - list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .game - list li {
+            margin-bottom: 10px;
+        }
+
+        #searchInput {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Zhaangg - Super</h1>
+    </header>
+    <main>
+        <div id="random - id - section">
+            <big>识别码：<span id="random - id"></span></big>
+        </div>
+        
+        <div id="browserVersionAlert" style="display: none;"></div>
+        <audio id="bgMusic" src="back.mp3" loop></audio>
+        <button onclick="playMusic()">播放背景音乐 第一次播放可能有些许卡顿，请耐心等待</button>
+        <button onclick="pauseMusic()">暂停背景音乐</button>
+        <br>
+        <p>网站已通过MySSL安全认证 评级为A+，网站右下角点击可查看报告</p>
+        <p>网站已禁用F1 - F12功能键及CTRL.Shift.Alt键</p>
+        <marquee>-网站网址 網站網址 Website URL URL - адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL - адрес сайта:zhaangg.github.io--网站网址 網站網址 Website URL URL - адрес сайта:zhaangg.github.io -</marquee>
+        <br>
+        <h2>最近更新</h2>
+        <ul class="game - list">
+            <li><a href="gamesnake/index.html">zhaangg扎昂格™ - 贪吃蛇 - 满血版(版本号：v0.0.2)</a></li>
+            <li><a href="car/index.html">zhaangg扎昂格™ - 2D狂野赛车🏎 - 满血版(版本号：v0.0.2)   火爆🔥</a></li>
+        </ul>
+        <hr>
+        <h2>Zhaangg扎昂格™小游戏平台</h2>
+        <input type="text" id="searchInput" placeholder="搜索游戏...">
+        <ul class="game - list" id="gameList">
+            <li><a href="game2048/index.html">zhaangg扎昂格™ - 2048小游戏 - 满血纯净版(版本号：v0.0.1)</a></li>
+            <li><a href="gamesnake/index.html">zhaangg扎昂格™ - 贪吃蛇 - 满血版(版本号：v0.0.2)</a></li>
+            <li><a href="gamechess/index.html">zhaangg扎昂格™intelligent(益智)-五子棋 - 满血版(版本号：v0.0.1)</a></li>
+            <li><a href="fruitgame/index.html">zhaangg扎昂格™ - zhaan扎安水果忍者 - 满血版   火爆🔥</a></li>
+            <li><a href="beatplane/index.html">打飞机游戏</a></li>
+            <li><a href="PVZ/Index.htm">植物大战僵尸</a></li>
+            <li><a href="T - Rex/index.html">跳跃的恐龙 - 国际版</a></li>
+            <li><a href="car/index.html">zhaangg扎昂格™ - 2D狂野赛车🏎 - 满血版(版本号：v0.0.2)   火爆🔥</a></li>
+        </ul>
+        <hr>
+        <h2>工具</h2>
+        <a href="Jilehe/index.html">鸡乐盒 Plus</a>
+        <a href="3D/3D.html">3D立方体</a>
+        <br><hr>
+        <h2>Zhaangg扎昂格™外链平台</h2>
+        <font color="#E4080A">打开可能较慢，请耐心等待</font><br>
+        <a href="music/index.html">网易云音乐外链</a><br>
+        <a href="video/index.html">bilibili视频外链</a><br>
+        <hr>
+        <i>主页版本：version3.1(更新内容：界面升级，添加搜索功能，优化布局)</i>
+        <br>
+        <i>本网站建议在网络通畅的情况下使用</i>
+        <br>
+        <i>为了最好体验，建议使用Chromium内核版本133以上(或Firefox Quantum 134以上，其他内核建议最新版本)的浏览器浏览</i><br><br><br><br><br>
+    </main>
+    
+    <footer>
+        <div id="cc-myssl-id">
+            <a href="https://myssl.com/您的域名?from=mysslid"><img src="https://static.myssl.com/res/images/myssl-id3.png" alt="" style="max-height:50px;display:block;margin:0 auto"></a>
+        </div>
+        &copy; 2025 Zhaangg - All rights reserved.
+    </footer>
+
+    <script>
+        function generateRandomId() {
+            const characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+            let randomId = '';
+            const length = 10;
+            for (let i = 0; i < length; i++) {
+                randomId += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return randomId;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const randomIdElement = document.getElementById('random - id');
+            const randomId = generateRandomId();
+            randomIdElement.textContent = randomId;
+        });
+
+        function validateLink(url) {
+            const allowedDomains = ['static.myssl.com','myssl.com','music.163.com','www.deepseek.com','www.bilibili.com','space.bilibili.com'];
+            const parsedUrl = new URL(url);
+            return allowedDomains.includes(parsedUrl.hostname) && parsedUrl.protocol === 'https:';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const allLinks = document.querySelectorAll('a, iframe');
+            allLinks.forEach(link => {
+                const href = link.getAttribute('href') || link.getAttribute('src');
+                if (href &&!validateLink(href)) {
+                    link.style.display = 'none';
+                }
+            });
+        });
+
+        function playMusic() {
+            const audio = document.getElementById('bgMusic');
+            audio.play().catch((error) => {
+                alert('音乐播放失败，请检查浏览器设置！ error 0x001');
+            });
+        }
+
+        function pauseMusic() {
+            const audio = document.getElementById('bgMusic');
+            audio.pause();
+        }
+
+        document.addEventListener('keydown', function (event) {
+            const keyCode = event.keyCode || event.which;
+            const ctrlKey = event.ctrlKey;
+            const shiftKey = event.shiftKey;
+            const altKey = event.altKey;
+
+            if (keyCode >= 112 && keyCode <= 123) {
+                event.preventDefault();
+                alert('温馨提示：您的F1 - F12键已被禁用');
+            }
+
+            if (ctrlKey || shiftKey || altKey) {
+                event.preventDefault();
+                alert('温馨提示：您的Ctrl.Shift.Alt键已被禁用');
+            }
+        });
+
+        function checkBrowserVersion() {
+            const userAgent = navigator.userAgent;
+            let message = '';
+
+            const chromiumMatch = userAgent.match(/Chrome\/([\d.]+)/);
+            if (chromiumMatch && chromiumMatch.length > 1) {
+                const chromiumVersion = parseFloat(chromiumMatch[1]);
+                if (chromiumVersion < 133) {
+                    message = `很抱歉！您使用的 Chromium 内核版本号是 ${chromiumVersion}，低于建议的133版本，请及时更新浏览器 error 0x002`;
+                } else {
+                    message = `报喜！您使用的 Chromium 内核版本号是 ${chromiumVersion}，符合要求`;
+                }
+            } else {
+                const firefoxMatch = userAgent.match(/Firefox\/([\d.]+)/);
+                if (firefoxMatch && firefoxMatch.length > 1) {
+                    const firefoxVersion = parseFloat(firefoxMatch[1]);
+                    if (firefoxVersion < 134) {
+                        message = `很抱歉！您使用的 Firefox Quantum 内核版本号是 ${firefoxVersion}，低于建议的134版本，请及时更新浏览器 error 0x002`;
+                    } else {
+                        message = `报喜！您使用的 Firefox Quantum 内核版本号是 ${firefoxVersion}，符合要求`;
+                    }
+                }
+            }
+
+            const alertDiv = document.getElementById('browserVersionAlert');
+            if (message) {
+                alertDiv.textContent = message;
+                alertDiv.style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', checkBrowserVersion);
+
+        const searchInput = document.getElementById('searchInput');
+        const gameList = document.getElementById('gameList');
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            const listItems = gameList.getElementsByTagName('li');
+            for (let i = 0; i < listItems.length; i++) {
+                const gameName = listItems[i].textContent.toLowerCase();
+                if (gameName.includes(searchTerm)) {
+                    listItems[i].style.display = 'block';
+                } else {
+                    listItems[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
