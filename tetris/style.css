@@ -1,0 +1,71 @@
+/* 基础布局样式 */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #2c3e50;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    display: flex;
+    gap: 30px;
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#game-canvas {
+    border: 2px solid #34495e;
+    background: #000;
+}
+
+.score-board {
+    color: #ecf0f1;
+    padding: 15px;
+    background: #34495e;
+    border-radius: 5px;
+}
+
+/* 游戏结束提示 */
+#game-over {
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+#game-over.hidden {
+    display: none;
+}
+
+button {
+    background: #27ae60;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #219a52;
+}
+
+/* 移动端适配 */
+@media (max-width: 600px) {
+    .game-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .score-board {
+        font-size: 14px;
+    }
+}

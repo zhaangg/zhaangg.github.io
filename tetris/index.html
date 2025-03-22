@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zhaangg扎昂格俄罗斯方块</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="game-canvas" width="300" height="600"></canvas>
+        <div class="score-board">
+            <h2>得分：<span id="score">0</span></h2>
+            <p>操作说明：</p>
+            <p>← → 移动 | ↑ 旋转 | ↓ 加速</p>
+        </div>
+    </div>
+    <div id="game-over" class="hidden">
+        <h2>游戏结束！</h2>
+        <button onclick="location.reload()">重新开始</button>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
