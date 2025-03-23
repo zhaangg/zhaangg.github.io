@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>zhaangg网站介绍</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>使用了zhaangg扎昂格™视频解析器DEMO</h1>
+    <div class="video-container">
+        <video id="main-video" src="jieshao.mp4">
+            <source type="video/mp4">
+            您的浏览器不支持视频播放
+        </video>
+        
+        <div class="controls">
+            <button class="play-btn" data-state="play">
+                <img src="assets/play.png" alt="播放">
+            </button>
+            <input type="range" class="progress-bar">
+            <span class="time-display">00:00</span>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
